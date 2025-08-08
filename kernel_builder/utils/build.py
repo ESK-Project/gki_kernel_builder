@@ -32,6 +32,8 @@ class Builder:
         self.jobs: int = cpu_count() or 1
 
         overrides = {
+            "ARCH": "arm64",
+            "SUBARCH": "arm64",
             "KBUILD_BUILD_USER": BUILD_USER,
             "KBUILD_BUILD_HOST": BUILD_HOST,
             "PATH": f"{self.clang_bin}{os.pathsep}{os.getenv('PATH', '')}",
