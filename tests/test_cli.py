@@ -75,12 +75,14 @@ def clean_init(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
 def test_clean(tmp_path: Path, clean_init) -> None:
     result: Result = runner.invoke(app, ["clean"])
     fake: Path = tmp_path / "out_dir"
+    root = fake / "fake_root"
+    out  = fake / "fake_out"
 
     assert result.exit_code == 0
     assert result.output.strip() == "Cleanup completed"
     assert fake.exists()
-    assert list(fake.iterdir()) == [fake / "fake_root", fake / "fake_out"]
-    assert list((fake / "fake_root").iterdir()) == []
+    assert set(fake.iterdir()) == {root, out}
+    assert list(root.iterdir()) == []
 
 
 def test_clean_all(tmp_path: Path, clean_init):
