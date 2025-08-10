@@ -8,8 +8,8 @@ from typing import override
 from rich.console import Console
 from rich.logging import RichHandler
 
-logger: Logger = logging.getLogger(__name__)
-console: Console = Console(force_terminal=True, color_system="auto")
+logger: Logger = logging.getLogger("gki_builder")
+console: Console = Console(color_system="auto")
 
 
 class ShFilter(Filter):
