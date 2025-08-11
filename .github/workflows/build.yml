@@ -120,7 +120,7 @@ jobs:
           exit 1
 
       - name: Checkout code & init submodules
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 1
           submodules: true
