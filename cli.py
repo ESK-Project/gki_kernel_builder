@@ -92,7 +92,7 @@ def clean(
 
     (ROOT / "github.env").unlink(missing_ok=True)
 
-    typer.echo("Cleanup completed")
+    typer.secho("Cleanup completed!", fg=typer.colors.GREEN)
 
 
 if __name__ == "__main__":

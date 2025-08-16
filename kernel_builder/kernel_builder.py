@@ -1,6 +1,10 @@
 import tarfile
+import textwrap
+import time
 from pathlib import Path
 
+from rich import print
+from rich.panel import Panel
 from kernel_builder.config.config import (
     CLANG_URL,
     CLANG_VARIANT,
@@ -47,11 +51,23 @@ class KernelBuilder:
             image if IMAGE_COMP == "raw" else image.with_suffix(f".{IMAGE_COMP}")
         )
 
+
+    def build_info(self) -> None:
+        build_info = textwrap.dedent(f"""
+            KernelSU: [bold green]{self.ksu_variant}[/bold green]
+            SuSFS: [bold yellow]{'Enabled' if self.use_susfs else 'Disabled'}[/bold yellow]
+            LXC: [bold yellow]{'Enabled' if self.use_lxc else 'Disabled'}[/bold yellow]
+            Image Compression: [cyan]{IMAGE_COMP}[/cyan]
+        """)
+
+        print(Panel(build_info, title="[bold]Build Info[/bold]", border_style="dim"))
+
     def run_build(self) -> None:
         """
         Run the complete build process.
         """
-        log(f"Build Config: {self.ksu_variant=}, {self.use_susfs=}, {self.use_lxc=}")
+        self.build_info()
+        time.sleep(1)
 
         # Reset paths
         reset_paths = [WORKSPACE, TOOLCHAIN, OUTPUT]
