@@ -4,11 +4,11 @@ This short guide explains **how configuration files are structured** in the Kern
 
 ---
 
-## 1 · Simplified Git Link
+## 1. Simplified Git Link
 
 > **Used by:** `manifest.py`, `config.py`
 
-### 1.1 Format
+### 1.1 Format
 
 ```plaintext
 <host>:<user>/<repo>
@@ -26,14 +26,14 @@ This short guide explains **how configuration files are structured** in the Kern
 github.com:bachnxuan/gki_kernel_builder
 ```
 
-### 1.2 Rules
+### 1.2 Rules
 
 * *Do **not** append* `.git`.
 * Use **HTTPS** format only, SSH URLs are **not** accepted (`git@…` will break the parser).
 
 ---
 
-## 2 · Manifest
+## 2 · Manifest
 
 Each source is represented by a dict below:
 
@@ -45,7 +45,7 @@ source: Source = {
 }
 ```
 
-### 2.1 Example
+### 2.1 Example
 
 ```python
 KERNEL: Source = {
@@ -55,13 +55,13 @@ KERNEL: Source = {
 }
 ```
 
-### 2.2 After adding a source
+### 2.2 After adding a source
 
 - Append the variable to the `SOURCES` list in `manifest.py` so it is checked‑out automatically.
 
 ---
 
-## 3 · Variants Configuration (`variants.json`)
+## 3 · Variants Configuration (`variants.json`)
 
 > [!NOTE]
 > `variants.json` tells the builder which Kconfig tweaks to apply for a given environment.\
@@ -79,7 +79,7 @@ Flow: CLI → env vars → scan variants.json → pick first entry whose
 }
 ```
 
-### 3.1 Complete example
+### 3.1 Complete example
 
 ```json
 {
