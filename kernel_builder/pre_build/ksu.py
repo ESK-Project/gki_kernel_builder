@@ -109,7 +109,7 @@ class KSUInstaller:
                 ref = "next-susfs" if self.use_susfs else "next"
             case "SUKI":
                 repo = "github.com:SukiSU-Ultra/SukiSU-Ultra"
-                ref = "susfs-main" if self.use_susfs else "nongki"
+                ref = "susfs-main" if self.use_susfs else "main"
             case _:
                 log(f"Unknown KernelSU variant {variant}, skipping install")
                 return
