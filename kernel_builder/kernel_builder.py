@@ -15,6 +15,7 @@ from kernel_builder.config.config import (
 from kernel_builder.constants import OUTPUT, TOOLCHAIN, WORKSPACE
 from kernel_builder.post_build.export_env import GithubExportEnv
 from kernel_builder.post_build.flashable import FlashableBuilder
+from kernel_builder.post_build.kpm import KPMPatcher
 from kernel_builder.pre_build.ksu import KSUInstaller
 from kernel_builder.pre_build.lxc import LXCPatcher
 from kernel_builder.pre_build.susfs import SUSFSPatcher
@@ -33,6 +34,7 @@ class KernelBuilder:
         self.use_susfs: bool = susfs
         self.use_lxc: bool = lxc
 
+        self.kpm: KPMPatcher = KPMPatcher(ksu)
         self.ksu: KSUInstaller = KSUInstaller(ksu, susfs)
         self.susfs: SUSFSPatcher = SUSFSPatcher(ksu, susfs)
         self.lxc: LXCPatcher = LXCPatcher(lxc)
@@ -104,6 +106,7 @@ class KernelBuilder:
         self.builder.build()
 
         # Post build
+        self.kpm.patch()
         self.export_env.export_github_env()
 
         # Build flashable

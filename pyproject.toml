@@ -1,10 +1,10 @@
 [project]
 name            = "kernel_builder"
 version         = "1.0.0"
-description     = "A python android12-5.10 gki kernel builder"
+description     = "A python gki kernel builder"
 readme          = "README.md"
 license         = "GPL-3.0"
-license-files   = ["LICENSE"]
+license-files   = ["LICEN[CS]E*"]
 requires-python = ">=3.12"
 dependencies    = [
     "lz4>=4.4.4",
@@ -22,7 +22,7 @@ dependencies    = [
 [tool.ruff]
 target-version = "py312"
 line-length    = 120
-extend-exclude = ["tests", "typings", "preserved"]
+extend-exclude = ["tests", "typings"]
 
 [tool.ruff.lint]
 extend-select = ["I"]
@@ -41,7 +41,7 @@ line-ending               = "auto"
 
 [tool.basedpyright]
 include = ["kernel_builder"]
-exclude = ["tests", "typings", "preserved"]
+exclude = ["tests", "typings"]
 
 pythonVersion    = "3.12"
 pythonPlatform   = "Linux"
