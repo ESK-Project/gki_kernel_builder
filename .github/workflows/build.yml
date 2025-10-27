@@ -232,7 +232,7 @@ jobs:
           done < $ENV_FILE
 
       - name: Upload final artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ env.kernel_name }}${{ env.variant }}
           path: |
